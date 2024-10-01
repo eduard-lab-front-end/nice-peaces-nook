@@ -20,7 +20,7 @@ function App() {
         <Route path="/contact" element={<ContactPage />} />
         <Route path="*" element={<h2>404 Error</h2>} />
       </Routes>
-      
+
       <Footer />
     </div>
   );
