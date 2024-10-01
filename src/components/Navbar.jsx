@@ -6,8 +6,8 @@ const Navbar = () => {
   const [collapseMenu, setCollapseMenu] = useState(false);
 
   return (
-    <div className="flex py-4 sm:px-8 px-6 bg-transparent min-h-[80px] tracking-wide relative z-50">
-      <div className="flex flex-wrap items-center lg:gap-y-2 gap-4 w-full">
+    <div className="bg-white/50 backdrop-filter backdrop-blur-[10px] flex py-4 sm:px-8 px-6 min-h-[80px] tracking-wide relative z-50">
+      <div className="flex flex-wrap items-center lg:gap-y-2 gap-4 w-full ">
         <Link to="/">
           <img src={logo} alt="logo" className="w-12" />
         </Link>
@@ -17,7 +17,7 @@ const Navbar = () => {
         >
           <button
             onClick={() => setCollapseMenu(false)}
-            className={`lg:hidden fixed top-2 right-4 z-[100] rounded-full bg-white p-3`}
+            className={`lg:hidden fixed top-0 left-1/2 z-[100] rounded-full bg-white p-3`}
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -35,14 +35,10 @@ const Navbar = () => {
             </svg>
           </button>
 
-          <ul className="lg:flex lg:gap-x-3 max-lg:space-y-3 max-lg:fixed max-lg:bg-white max-lg:w-1/2 max-lg:min-w-[300px] max-lg:top-0 max-lg:left-0 max-lg:p-6 max-lg:h-full max-lg:shadow-md max-lg:overflow-auto z-50">
+          <ul className="lg:flex lg:gap-x-3 max-lg:space-y-3 max-lg:fixed max-lg:bg-white max-lg:w-1/2 max-lg:min-w-[300px] max-lg:top-0 max-lg:left-0 max-lg:p-6 max-lg:h-full max-lg:shadow-md max-lg:overflow-auto z-50 min-h-fit">
             <li className="mb-6 hidden max-lg:block">
               <Link to="/">
-                <img
-                src={logo}
-                  alt="logo"
-                  className="w-24"
-                />
+                <img src={logo} alt="logo" className="w-24" />
               </Link>
             </li>
             <li className="max-lg:border-b max-lg:py-3 px-3">
@@ -67,6 +63,14 @@ const Navbar = () => {
                 className="text-[#333] hover:text-[#ddaf92] text-[15px] block font-semibold"
               >
                 Team
+              </Link>
+            </li>
+            <li className="max-lg:border-b max-lg:py-3 px-3">
+              <Link
+                to="/products"
+                className="text-[#333] hover:text-[#ddaf92] text-[15px] block font-semibold"
+              >
+                Products
               </Link>
             </li>
             <li className="max-lg:border-b max-lg:py-3 px-3">

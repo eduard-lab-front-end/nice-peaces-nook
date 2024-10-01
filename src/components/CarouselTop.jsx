@@ -33,10 +33,10 @@ const CarouselTop = () => {
         control: {            
             cursor: "default",
             background: '#e89f71',
-            '&[data-active]': {
-            opacity: 0,
-            cursor: 'pointer',
-          },
+          //   '&[dataActive]': {
+          //   background: '#fff',
+          //   cursor: 'pointer',
+          // },
         },
       }}
     >
@@ -49,37 +49,6 @@ const CarouselTop = () => {
         </Carousel.Slide>
       ))}
     </Carousel>
-    // <div className="relative flex items-center gap-2 w-full pt-10">
-    //   <button
-    //     onClick={() => {
-    //       activeItemIndex !== 0 &&
-    //         setActiveItemIndex((prevIndex) => prevIndex - 1);
-    //     }}
-    //     className="absolute right-20 top-0 z-30 min-w-[30px] h-[30px] rounded-full grid place-items-center text-white bg-[#e89f71] hover:bg-opacity-60 duration-200"
-    //   >
-    //     <IconChevronLeft />
-    //   </button>
-
-    //   <div className="relative min-w-[400px] w-full h-[550px] grid place-items-center rounded-lg duration-500">
-    //     {/* <p>{carouselData.current[activeItemIndex].title}</p> */}
-
-    //     <img
-    //       src={carouselData.current[activeItemIndex].url}
-    //       alt=""
-    //       className="absolute object-cover h-full w-full rounded-lg"
-    //       radius="md"
-    //     />
-    //   </div>
-    //   <button
-    //     onClick={() => {
-    //       activeItemIndex !== carouselData.current.length - 1 &&
-    //         setActiveItemIndex((prevIndex) => prevIndex + 1);
-    //     }}
-    //     className="absolute right-10 top-0 min-w-[30px] h-[30px] rounded-full grid place-items-center text-white bg-[#e89f71] hover:bg-opacity-60 duration-200"
-    //   >
-    //     <IconChevronRight />
-    //   </button>
-    // </div>
   );
 };
 export default CarouselTop;

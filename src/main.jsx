@@ -8,13 +8,16 @@ import { MantineProvider } from "@mantine/core";
 import "@mantine/core/styles.css";
 import theme from "./styles/theme.js";
 import { BrowserRouter } from "react-router-dom";
+import ProductProvider from "./providers/StateProvider.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <BrowserRouter>
-      <MantineProvider theme={theme}>
-        <App />
-      </MantineProvider>
-    </BrowserRouter>
+    <ProductProvider>
+      <BrowserRouter>
+        <MantineProvider theme={theme}>
+          <App />
+        </MantineProvider>
+      </BrowserRouter>
+    </ProductProvider>
   </React.StrictMode>
 );

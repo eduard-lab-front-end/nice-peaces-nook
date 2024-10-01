@@ -6,6 +6,8 @@ import HomePage from "./pages/HomePage";
 import Footer from "./components/Footer";
 import TeamPage from "./pages/TeamPage";
 import ContactPage from "./pages/ContactPage";
+import ProductsPage from "./pages/ProductsPage";
+import ProductDetailsPage from "./pages/ProductDetailsPage";
 
 function App() {
   return (
@@ -17,6 +19,8 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/team" element={<TeamPage />} />
+        <Route path="/products" element={<ProductsPage />} />
+        <Route path="/products/:productId" element={<ProductDetailsPage />} />
         <Route path="/contact" element={<ContactPage />} />
         <Route path="*" element={<h2>404 Error</h2>} />
       </Routes>
