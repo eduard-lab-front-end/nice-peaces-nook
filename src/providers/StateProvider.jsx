@@ -7,7 +7,9 @@ const ProductProvider = ({ children }) => {
 
   const fetchProducts = async () => {
     try {
-      const response = await fetch("http://localhost:4000/furnitureShop");
+      const response = await fetch(
+        `${import.meta.env.VITE_API_URL}/furnitureShop`
+      );
       if (response.ok) {
         const data = await response.json();
         setProducts(data);
