@@ -4,6 +4,7 @@ export const ProductContext = createContext();
 
 const ProductProvider = ({ children }) => {
   const [products, setProducts] = useState([]);
+  const [needRefresh, setNeedRefresh] = useState(true);
 
   const fetchProducts = async () => {
     try {
@@ -20,11 +21,16 @@ const ProductProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    fetchProducts();
-  }, []);
+    if (needRefresh) {
+      fetchProducts();
+      setNeedRefresh(false);
+    }
+  }, [needRefresh]);
 
   return (
-    <ProductContext.Provider value={products}>
+    <ProductContext.Provider
+      value={{ products, fetchProducts, setNeedRefresh }}
+    >
       {children}
     </ProductContext.Provider>
   );

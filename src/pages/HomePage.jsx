@@ -12,7 +12,21 @@ const HomePage = () => {
     <main className="pt-24">
       <section className="relative my-10">
         <Carouse />
-        <Modal />
+        <Modal
+          title="High-Quality Furniture Just For You"
+          description="Our furniture is made from selected and best quality materials that are
+        suitable for your dream home"
+          btnTitle='Shop Now'
+          path={'/products'}
+          classes={'top-[-35px] left-20 p-14'}
+        />
+        <Modal
+          title="Let's work together!!!"
+          description="Use our store to sell your own home improvement products to help us realize our goal of a nice nook."
+          btnTitle='Add Product Now'
+          path={'/products/new'}
+          classes={'-bottom-6 right-20 p-7'}
+        />
       </section>
       <section className="p-10 flex justify-evenly flex-wrap gap-6">
         <div className="flex justify-center items-center gap-2 basis-1/4">

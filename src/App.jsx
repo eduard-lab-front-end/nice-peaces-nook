@@ -8,6 +8,9 @@ import TeamPage from "./pages/TeamPage";
 import ContactPage from "./pages/ContactPage";
 import ProductsPage from "./pages/ProductsPage";
 import ProductDetailsPage from "./pages/ProductDetailsPage";
+import CartPage from "./pages/CartPage";
+import AddProductPage from "./pages/AddProductPage";
+import UpdateProductPage from "./pages/UpdateProductPage";
 
 function App() {
   return (
@@ -21,7 +24,10 @@ function App() {
         <Route path="/team" element={<TeamPage />} />
         <Route path="/products" element={<ProductsPage />} />
         <Route path="/products/:productId" element={<ProductDetailsPage />} />
+        <Route path="/products/new" element={<AddProductPage />} />
+        <Route path="/products/update/:productId" element={<UpdateProductPage />} />
         <Route path="/contact" element={<ContactPage />} />
+        <Route path="/cart" element={<CartPage />} />
         <Route path="*" element={<h2>404 Error</h2>} />
       </Routes>
 
