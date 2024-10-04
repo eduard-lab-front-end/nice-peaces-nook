@@ -26,17 +26,13 @@ const CarouselTop = () => {
       dragFree
       slideSize="60%"
       slideGap="md"
-      height={450}
-      initialSlide={1}
+      height={`450`}
+      initialSlide={1} 
       loop
       styles={{
         control: {            
             cursor: "default",
             background: '#e89f71',
-          //   '&[dataActive]': {
-          //   background: '#fff',
-          //   cursor: 'pointer',
-          // },
         },
       }}
     >

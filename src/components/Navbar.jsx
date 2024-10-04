@@ -1,18 +1,22 @@
 import { useContext, useState } from "react";
 import logo from "../assets/images/logo_transparent.png";
-import { Link } from "react-router-dom";
 import { ProductContext } from "../providers/StateProvider";
+import { Link } from "react-router-dom";
+import { Avatar, HoverCard, Text } from "@mantine/core";
 
 const Navbar = () => {
   const [collapseMenu, setCollapseMenu] = useState(false);
-  const {products} = useContext(ProductContext);
-  const productsInCart = products.filter((currentProduct) => currentProduct.inCart == true);
-  // console.log(products, 'cart')
+  const { products } = useContext(ProductContext);
+  const isInCart = products.filter((currentProduct) => currentProduct.inCart);
+  const isFavorite = products.filter(
+    (currentProduct) => currentProduct.isFavorite
+  );
+
   return (
-    <div className="bg-white/50 backdrop-filter backdrop-blur-[10px] flex py-4 sm:px-8 px-6 min-h-[80px] tracking-wide relative z-50">
+    <div className="bg-white/10 backdrop-filter backdrop-blur-[10px] flex py-2 sm:px-8 px-6 min-h-[80px] tracking-wide relative z-50">
       <div className="flex flex-wrap items-center lg:gap-y-2 gap-4 w-full ">
         <Link to="/">
-          <img src={logo} alt="logo" className="w-12" />
+          <img src={logo} alt="logo" className="w-20" />
         </Link>
         <div
           style={{ display: collapseMenu ? "block" : "none" }}
@@ -38,15 +42,16 @@ const Navbar = () => {
             </svg>
           </button>
 
-          <ul className="lg:flex lg:gap-x-3 max-lg:space-y-3 max-lg:fixed max-lg:bg-white max-lg:w-1/2 max-lg:min-w-[300px] max-lg:top-0 max-lg:left-0 max-lg:p-6 max-lg:h-full max-lg:shadow-md max-lg:overflow-auto z-50 min-h-fit">
+          <ul className="lg:flex lg:gap-x-3 max-lg:space-y-3 max-lg:fixed max-lg:bg-white/95 max-lg:w-1/2 max-lg:min-w-[300px] max-lg:top-0 max-lg:left-0 max-lg:p-6 max-lg:h-full max-lg:shadow-md max-lg:overflow-auto z-50 min-h-fit">
             <li className="mb-6 hidden max-lg:block">
-              <Link to="/">
-                <img src={logo} alt="logo" className="w-24" />
+              <Link to="/" onClick={() => setCollapseMenu(false)}>
+                <img src={logo} alt="logo" className="w-32" />
               </Link>
             </li>
             <li className="max-lg:border-b max-lg:py-3 px-3">
               <Link
-                to="/"  
+                to="/"
+                onClick={() => setCollapseMenu(false)}
                 className=" text-[#333] hover:text-[#ddaf92] text-[15px] block font-semibold"
               >
                 Home
@@ -54,6 +59,7 @@ const Navbar = () => {
             </li>
             <li className="max-lg:border-b max-lg:py-3 px-3">
               <Link
+                onClick={() => setCollapseMenu(false)}
                 to="/about"
                 className="text-[#333] hover:text-[#ddaf92] text-[15px] block font-semibold"
               >
@@ -62,6 +68,7 @@ const Navbar = () => {
             </li>
             <li className="max-lg:border-b max-lg:py-3 px-3">
               <Link
+                onClick={() => setCollapseMenu(false)}
                 to="/team"
                 className="text-[#333] hover:text-[#ddaf92] text-[15px] block font-semibold"
               >
@@ -70,6 +77,7 @@ const Navbar = () => {
             </li>
             <li className="max-lg:border-b max-lg:py-3 px-3">
               <Link
+                onClick={() => setCollapseMenu(false)}
                 to="/products"
                 className="text-[#333] hover:text-[#ddaf92] text-[15px] block font-semibold"
               >
@@ -78,6 +86,7 @@ const Navbar = () => {
             </li>
             <li className="max-lg:border-b max-lg:py-3 px-3">
               <Link
+                onClick={() => setCollapseMenu(false)}
                 to="/contact"
                 className="text-[#333] hover:text-[#ddaf92] text-[15px] block font-semibold"
               >
@@ -89,11 +98,21 @@ const Navbar = () => {
 
         <div className="flex gap-x-6 gap-y-4 ml-auto">
           <div className="flex border-2 focus-within:border-gray-400 rounded-full px-6 py-3 overflow-hidden max-w-52 max-lg:hidden">
-            <input
-              type="text"
-              placeholder="Search something..."
-              className="w-full text-sm bg-transparent outline-none pr-2"
-            />
+            <HoverCard shadow="md" closeDelay={1000}>
+              <HoverCard.Target>
+                <input
+                  type="text"
+                  placeholder="Search something..."
+                  className="w-full text-sm bg-transparent outline-none pr-2"
+                />
+              </HoverCard.Target>
+              <HoverCard.Dropdown width='50px'>
+                <Text size="xs" fw={500}>
+                  This fragment is part of a demonstration that does not yet
+                  have functionality.
+                </Text>
+              </HoverCard.Dropdown>
+            </HoverCard>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 192.904 192.904"
@@ -105,23 +124,25 @@ const Navbar = () => {
           </div>
 
           <div className="flex items-center space-x-8">
-            <span className="relative">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="20px"
-                className="cursor-pointer fill-[#333] inline"
-                viewBox="0 0 64 64"
-              >
-                <path
-                  d="M45.5 4A18.53 18.53 0 0 0 32 9.86 18.5 18.5 0 0 0 0 22.5C0 40.92 29.71 59 31 59.71a2 2 0 0 0 2.06 0C34.29 59 64 40.92 64 22.5A18.52 18.52 0 0 0 45.5 4ZM32 55.64C26.83 52.34 4 36.92 4 22.5a14.5 14.5 0 0 1 26.36-8.33 2 2 0 0 0 3.27 0A14.5 14.5 0 0 1 60 22.5c0 14.41-22.83 29.83-28 33.14Z"
-                  data-original="#000000"
-                />
-              </svg>
-              <span className="absolute left-auto -ml-1 top-0 rounded-full bg-red-500 px-1 py-0 text-xs text-white">
-                0
+            <Link to="/favorite">
+              <span className="relative">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20px"
+                  className="cursor-pointer fill-[#333] inline"
+                  viewBox="0 0 64 64"
+                >
+                  <path
+                    d="M45.5 4A18.53 18.53 0 0 0 32 9.86 18.5 18.5 0 0 0 0 22.5C0 40.92 29.71 59 31 59.71a2 2 0 0 0 2.06 0C34.29 59 64 40.92 64 22.5A18.52 18.52 0 0 0 45.5 4ZM32 55.64C26.83 52.34 4 36.92 4 22.5a14.5 14.5 0 0 1 26.36-8.33 2 2 0 0 0 3.27 0A14.5 14.5 0 0 1 60 22.5c0 14.41-22.83 29.83-28 33.14Z"
+                    data-original="#000000"
+                  />
+                </svg>
+                <span className="absolute left-auto -ml-1 top-0 rounded-full bg-red-500 px-1 py-0 text-xs text-white">
+                  {isFavorite.length}
+                </span>
               </span>
-            </span>
-            <Link to='/cart'>
+            </Link>
+            <Link to="/cart">
               <span className="relative">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -136,12 +157,20 @@ const Navbar = () => {
                   ></path>
                 </svg>
                 <span className="absolute left-auto -ml-1 top-0 rounded-full bg-red-500 px-1 py-0 text-xs text-white">
-                  0
+                  {isInCart.length}
                 </span>
               </span>
             </Link>
-            <button className="px-5 py-2 text-sm rounded-full text-[#333] border-2 border-[#ddaf92] hover:bg-[#ddaf92]">
-              Sign In
+            <button className="px-5 py-2 text-sm rounded-full text-[#333]">
+              <Avatar
+                component="a"
+                href="https://github.com/eduard-lab-front-end"
+                target="_blank"
+                src="avatar.png"
+                alt="it's me"
+                color="#ddaf92"
+                size={45}
+              />
             </button>
 
             <button onClick={() => setCollapseMenu(true)} className="lg:hidden">

@@ -1,4 +1,4 @@
-import { Button, NumberInput, TextInput } from "@mantine/core";
+import { Button } from "@mantine/core";
 import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { v4 as uuid } from "uuid";
@@ -27,8 +27,6 @@ const FormProduct = ({
   const navigate = useNavigate();
 
   const handleChange = (event) => {
-    // console.log(event);
-    // console.log(event.target);
     const { name, value } = event.target;
     setFormValues((prevValues) => ({
       ...prevValues,
@@ -59,58 +57,118 @@ const FormProduct = ({
   };
 
   return (
-    <div className="max-w-lg my-28 mx-auto">
+    <div className="max-w-lg my-28 mx-auto border rounded-xl p-10 bg-[#ddaf92]/40">
+      {!isUpdate ? <h2 className="text-xl text-center mb-8 font-semibold">Thank you for choosing to work with us</h2> : <h2 className="text-xl text-center mb-8 font-semibold">Update your product</h2>}
       <form onSubmit={handleSubmit}>
-        <TextInput
-          value={formValues.title}
-          label="Title"
-          placeholder="Input placeholder"
-          onChange={handleChange}
-          name="title"
-          required
-        />
-        <input
-          type="number"
-          value={formValues.price}
-          label="Price"
-          placeholder="Input placeholder"
-          onChange={handleChange}
-          name="price"
-          required
-        />
-        <TextInput
-          value={formValues.description}
-          label="Description"
-          placeholder="Input placeholder"
-          onChange={handleChange}
-          name="description"
-          required
-        />
-        <TextInput
-          value={formValues.subDescription}
-          label="Snippet"
-          placeholder="Input placeholder"
-          onChange={handleChange}
-          name="subDescription"
-          required
-        />
-        <TextInput
-          value={formValues.url}
-          label="Url"
-          placeholder="Input placeholder"
-          onChange={handleChange}
-          name="url"
-          required
-        />
-        <input
-          value={formValues.discount}
-          label="Discount in %"
-          placeholder="Input placeholder"
-          onChange={handleChange}
-          name="discount"
-          required
-        />
-        <Button type="submit">{isUpdate ? 'Update' : 'Add new product'}</Button>
+        <div className="mb-5">
+          <label
+            htmlFor="title"
+            className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+          >
+            Title
+          </label>
+          <input
+            type="text"
+            id="title"
+            value={formValues.title}
+            className="bg-gray-50 border border-gray-300 focus:outline-none text-gray-900 text-sm rounded-lg focus:ring-[#ddaf92] focus:border-[#ddaf92] block w-full p-2.5"
+            placeholder="Input placeholder"
+            onChange={handleChange}
+            name="title"
+            required
+          />
+        </div>
+        <div className="mb-5">
+          <label
+            htmlFor="price"
+            className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+          >
+            Price
+          </label>
+          <input
+            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:outline-none focus:ring-[#ddaf92] focus:border-[#ddaf92] block w-full p-2.5"
+            id="price"
+            type="number"
+            value={formValues.price}
+            label="Price"
+            placeholder="Input placeholder"
+            onChange={handleChange}
+            name="price"
+            required
+          />
+        </div>
+        <div className="mb-5">
+          <label
+            htmlFor="description"
+            className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+          >
+            Description
+          </label>
+          <input
+            className="bg-gray-50 border border-gray-300 focus:outline-none text-gray-900 text-sm rounded-lg focus:ring-[#ddaf92] focus:border-[#ddaf92] block w-full p-2.5"
+            type="text"
+            id="description"
+            value={formValues.description}
+            placeholder="Input placeholder"
+            onChange={handleChange}
+            name="description"
+            required
+          />
+        </div>
+        <div className="mb-5">
+          <label
+            htmlFor="subDescription"
+            className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+          >
+            Snippet
+          </label>
+          <input
+            className="bg-gray-50 border border-gray-300 focus:outline-none text-gray-900 text-sm rounded-lg focus:ring-[#ddaf92] focus:border-[#ddaf92] block w-full p-2.5"
+            type="text"
+            id="subDescription"
+            value={formValues.subDescription}
+            placeholder="Input placeholder"
+            onChange={handleChange}
+            name="subDescription"
+            required
+          />
+        </div>
+        <div className="mb-5">
+          <label
+            htmlFor="url"
+            className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+          >
+            Your image
+          </label>
+          <input
+            className="bg-gray-50 border border-gray-300 focus:outline-none text-gray-900 text-sm rounded-lg focus:ring-[#ddaf92] focus:border-[#ddaf92] block w-full p-2.5"
+            type="text"
+            id="url"
+            value={formValues.url}
+            placeholder="Type some url..."
+            onChange={handleChange}
+            name="url"
+            required
+          />
+        </div>
+        <div className="mb-3">
+          <label
+            htmlFor="discount"
+            className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+          >
+            Discount in %
+          </label>
+          <input
+            className="bg-gray-50 border border-gray-300 focus:outline-none text-gray-900 text-sm rounded-lg focus:ring-[#ddaf92] focus:border-[#ddaf92] block w-full p-2.5 mb-7"
+            value={formValues.discount}
+            id="discount"
+            placeholder="Input placeholder"
+            onChange={handleChange}
+            name="discount"
+            required
+          />
+        </div>
+        <Button type="submit" color="#ddaf92">{isUpdate ? "Update" : "Add new product"}</Button>
       </form>
     </div>
   );

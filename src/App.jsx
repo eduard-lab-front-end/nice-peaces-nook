@@ -11,6 +11,7 @@ import ProductDetailsPage from "./pages/ProductDetailsPage";
 import CartPage from "./pages/CartPage";
 import AddProductPage from "./pages/AddProductPage";
 import UpdateProductPage from "./pages/UpdateProductPage";
+import FavoriteProductsPage from "./pages/FavoriteProductsPage";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
         <Route path="/products/update/:productId" element={<UpdateProductPage />} />
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/cart" element={<CartPage />} />
+        <Route path="/favorite" element={<FavoriteProductsPage />} />
         <Route path="*" element={<h2>404 Error</h2>} />
       </Routes>
 

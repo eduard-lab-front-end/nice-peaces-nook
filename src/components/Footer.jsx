@@ -2,6 +2,7 @@ import { FiTwitter } from "react-icons/fi";
 import { CiFacebook } from "react-icons/ci";
 import { FaDribbble } from "react-icons/fa6";
 import { FaGithub } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -20,25 +21,25 @@ const Footer = () => {
                 className="bg-white text-lightBlue-400 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2"
                 type="button"
               >
-                <FiTwitter className="w-full h-1/2 text-[#38bdf8]"/>    
+                <FiTwitter className="w-full h-1/2 text-[#38bdf8]" />
               </button>
               <button
                 className="bg-white text-lightBlue-600 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2"
                 type="button"
               >
-                <CiFacebook className="w-full h-1/2 text-[#0284c7]"/>
+                <CiFacebook className="w-full h-1/2 text-[#0284c7]" />
               </button>
               <button
                 className="bg-white text-pink-400 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2"
                 type="button"
               >
-                <FaDribbble className="w-full h-1/2 text-[#f57bbb]"/>
+                <FaDribbble className="w-full h-1/2 text-[#f57bbb]" />
               </button>
               <button
                 className="bg-white text-blueGray-800 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2"
                 type="button"
               >
-                <FaGithub className="w-full h-1/2 text-[#1e293b]"/>
+                <FaGithub className="w-full h-1/2 text-[#1e293b]" />
               </button>
             </div>
           </div>
@@ -50,36 +51,36 @@ const Footer = () => {
                 </span>
                 <ul className="list-unstyled">
                   <li>
-                    <a
+                    <Link
                       className="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm"
-                      href="https://www.creative-tim.com/presentation?ref=njs-profile"
+                      to="/about"
                     >
                       About Us
-                    </a>
+                    </Link>
                   </li>
                   <li>
-                    <a
+                    <Link
                       className="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm"
-                      href="https://blog.creative-tim.com?ref=njs-profile"
+                      to="/team"
                     >
-                      Blog
-                    </a>
+                      Team
+                    </Link>
                   </li>
                   <li>
-                    <a
+                    <Link
                       className="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm"
-                      href="https://www.github.com/creativetimofficial?ref=njs-profile"
+                      to=""
                     >
                       Github
-                    </a>
+                    </Link>
                   </li>
                   <li>
-                    <a
+                    <Link
                       className="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm"
-                      href="https://www.creative-tim.com/bootstrap-themes/free?ref=njs-profile"
+                      to="/products"
                     >
-                      Free Products
-                    </a>
+                      Products
+                    </Link>
                   </li>
                 </ul>
               </div>
@@ -89,36 +90,36 @@ const Footer = () => {
                 </span>
                 <ul className="list-unstyled">
                   <li>
-                    <a
+                    <Link
                       className="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm"
-                      href="https://github.com/creativetimofficial/notus-js/blob/main/LICENSE.md?ref=njs-profile"
+                      to="/"
                     >
                       MIT License
-                    </a>
+                    </Link>
                   </li>
                   <li>
-                    <a
+                    <Link
                       className="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm"
-                      href="https://creative-tim.com/terms?ref=njs-profile"
+                      to="/"
                     >
                       Terms &amp; Conditions
-                    </a>
+                    </Link>
                   </li>
                   <li>
-                    <a
+                    <Link
                       className="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm"
-                      href="https://creative-tim.com/privacy?ref=njs-profile"
+                      to="/"
                     >
                       Privacy Policy
-                    </a>
+                    </Link>
                   </li>
                   <li>
-                    <a
+                    <Link
                       className="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm"
-                      href="https://creative-tim.com/contact-us?ref=njs-profile"
+                      to="/contact"
                     >
                       Contact Us
-                    </a>
+                    </Link>
                   </li>
                 </ul>
               </div>
@@ -129,9 +130,9 @@ const Footer = () => {
         <div className="flex flex-wrap items-center md:justify-between justify-center">
           <div className="w-full md:w-4/12 px-4 mx-auto text-center">
             <div className="text-sm text-blueGray-500 font-semibold py-1">
-              Copyright © <span id="get-current-year">2021</span>
+              Copyright © <span id="get-current-year">2024</span>
               <a
-                href="https://www.creative-tim.com/product/notus-js"
+                href=""
                 className="text-blueGray-500 hover:text-gray-800"
                 target="_blank"
               />{" "}
@@ -140,7 +141,7 @@ const Footer = () => {
                 href="https://www.creative-tim.com?ref=njs-profile"
                 className="text-blueGray-500 hover:text-blueGray-800"
               >
-                Creative Tim
+                Eddie
               </a>
               .
             </div>

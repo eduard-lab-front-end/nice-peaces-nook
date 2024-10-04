@@ -1,68 +1,49 @@
-import { useEffect, useState } from "react";
+import { useContext } from "react";
+import { ProductContext } from "../providers/StateProvider";
 import { CiHeart } from "react-icons/ci";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { AiOutlineMinus } from "react-icons/ai";
 import { FaPlus } from "react-icons/fa";
 
 const CartPage = () => {
-  const [cartProducts, setCartProducts] = useState([]);
-  const subTotal = cartProducts.reduce(
+  const { products, setNeedRefresh } = useContext(ProductContext);
+  const isInCart = products.filter((currentProduct) => currentProduct.inCart)
+  const subTotal = isInCart.reduce(
     (acc, currentProduct) => acc + currentProduct.price,
     0
   );
   const avrDiscount = Math.floor(
-    cartProducts.reduce(
-      (acc, currentProduct) => acc + currentProduct.discount,
-      0
-    ) / cartProducts.length
+    isInCart.reduce((acc, currentProduct) => acc + currentProduct.discount, 0) /
+    isInCart.length
   );
   const taxes = Math.floor(subTotal * (5 / 100));
   const discountSum = Math.floor(subTotal * (avrDiscount / 100)) | 0;
 
-  const fetchCartProducts = async () => {
+  const toggleProductCart = async (productId) => {
+    const findProduct = products.find(product => product.id === productId)
     try {
-      const response = await fetch(`${import.meta.env.VITE_API_URL}/cart`);
-      console.log(response);
-      if (response.ok) {
-        const data = await response.json();
-        setCartProducts(data);
-      } else if (response === 500) {
-        alert("Already in your cart");
-      }
-    } catch (error) {
-      console.error("Error getting products", error);
-    }
-  };
-
-  const deleteProduct = async (productId) => {
-    try {
+      const updatedProduct = { ...findProduct, inCart: false };
       const response = await fetch(
-        `${import.meta.env.VITE_API_URL}/cart/${productId}`,
+        `${import.meta.env.VITE_API_URL}/furnitureShop/${findProduct.id}`,
         {
-          method: "DELETE",
+          method: "PUT",
+          headers: { "Content-type": "application/json" },
+          body: JSON.stringify(updatedProduct),
         }
       );
-
       if (response.ok) {
-        fetchCartProducts();
-      } else {
-        alert("Failed to delete the product");
+        setNeedRefresh(true);
       }
     } catch (error) {
-      console.error("Error deleting product", error);
+      console.error("Failed to add a product", error);
     }
   };
-
-  useEffect(() => {
-    fetchCartProducts();
-  }, []);
-
   return (
     <div className="font-sans my-20 max-w-4xl max-md:max-w-xl mx-auto p-4">
       <h1 className="text-2xl font-extrabold text-gray-800">Your Cart</h1>
       <div className="grid md:grid-cols-3 gap-4 mt-8">
         <div className="md:col-span-2 space-y-4">
-          {cartProducts.map((currentProduct) => (
+          {isInCart.map((currentProduct) => (
             <div
               key={currentProduct.id}
               className="flex gap-4 bg-white px-4 py-6 rounded-md shadow-[0_2px_12px_-3px_rgba(6,81,237,0.3)]"
@@ -105,7 +86,7 @@ const CartPage = () => {
                   <CiHeart color="red" size={20} />
                   <RiDeleteBin6Line
                     size={20}
-                    onClick={() => deleteProduct(currentProduct.id)}
+                    onClick={() => toggleProductCart(currentProduct.id)}
                   />
                 </div>
                 <h3 className="text-base font-bold text-gray-800 mt-auto">
