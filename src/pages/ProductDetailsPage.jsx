@@ -151,9 +151,9 @@ const ProductDetailsPage = () => {
              text-white rounded-md hover:bg-purple-600 ml-2 "
           >
             {product.isFavorite ? (
-              <IconHeart stroke={1.25} />
-            ) : (
               <IconHeartFilled color="#ff0000bd" />
+            ) : (
+              <IconHeart stroke={1.25} />
             )}
           </button>
         </div>

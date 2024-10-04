@@ -39,17 +39,3 @@ function App() {
 }
 
 export default App;
-
-{
-  /* <AppShell header={{ height: 80 }} padding="lg" withBorder={false}>
-      <AppShell.Header>
-        <Navbar />
-     </AppShell.Header>
-
-     <AppShell.Main className="min-h-screen bg-gradient-to-r from-[#f9d9b2] to-[#f7e3cb]">
-        <section className="flex justify-center items-center">
-          <Carouse /> 
-        </section>
-      </AppShell.Main>
-     </AppShell>  */
-}
